@@ -350,7 +350,11 @@ module.exports = function (grunt) {
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      }
+      },
+      CNAME: {
+        src: 'CNAME',
+        dest: 'dist/CNAME',
+      },
     },
 
     // Run some tasks in parallel to speed up build process
@@ -368,7 +372,18 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
-    }
+    },
+    buildcontrol: {
+      dist: {
+        options: {
+          remote: 'git@github.com:skgtech/stepstepjump.git',
+          branch: 'gh-pages',
+          commit: true,
+          push: true,
+          dir: 'dist',
+        }
+      }
+    },
   });
 
 
@@ -422,6 +437,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
+    'copy:CNAME',
     'rev',
     'usemin',
     'htmlmin'
@@ -432,4 +448,11 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('deploy', [
+    'test',
+    'build',
+    'buildcontrol'
+  ]);
+
 };
