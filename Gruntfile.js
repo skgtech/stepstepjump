@@ -350,7 +350,11 @@ module.exports = function (grunt) {
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      }
+      },
+      CNAME: {
+        src: 'CNAME',
+        dest: 'dist/CNAME',
+      },
     },
 
     // Run some tasks in parallel to speed up build process
@@ -433,6 +437,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
+    'copy:CNAME',
     'rev',
     'usemin',
     'htmlmin'
