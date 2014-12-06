@@ -24,7 +24,9 @@
     "grunt-wiredep": "^1.7.0",
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.4.0"
+    "time-grunt": "^0.4.0",
+    "browserify": "^7.0.0",
+    "grunt-browserify": "^3.2.1"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -1,7 +1,3 @@
-// Generated on 2014-12-06 using
-// generator-webapp 0.5.1
-'use strict';
-
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -34,12 +30,15 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
-      js: {
+      jscompiled: {
         files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['jshint'],
         options: {
           livereload: true
         }
+      },
+      jsbrowserify: {
+        files: ['jsapp/**/*.js'],
+        tasks: ['browserify:app'],
       },
       jstest: {
         files: ['test/spec/{,*/}*.js'],
@@ -154,7 +153,7 @@ module.exports = function (grunt) {
       options: {
         sourceMap: true,
         includePaths: ['bower_components']
-        },
+      },
       dist: {
         files: [{
           expand: true,
@@ -286,6 +285,16 @@ module.exports = function (grunt) {
       }
     },
 
+    browserify: {
+      options: {
+      },
+      app: {
+        files: {
+          'app/scripts/app.src.js': ['jsapp/boot.js'],
+        },
+      },
+    },
+
     // By default, your `index.html`'s <!-- Usemin block --> will take care
     // of minification. These next options are pre-configured if you do not
     // wish to use the Usemin blocks.
@@ -404,6 +413,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('build', [
+    'browserify:app',
     'clean:dist',
     'wiredep',
     'useminPrepare',
