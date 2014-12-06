@@ -1,8 +1,8 @@
 /**
  * @fileOverview The master bootstrap file of the frontend application.
  */
-
-console.log('Allo!');
+var parseService = require('./services/parse.service');
+parseService.init();
 
 var Level01 = require('./controllers/level-01.ctrl');
 
