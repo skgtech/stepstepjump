@@ -154,7 +154,7 @@ module.exports = function (grunt) {
       options: {
         sourceMap: true,
         includePaths: ['bower_components']
-        },
+      },
       dist: {
         files: [{
           expand: true,
