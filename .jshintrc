@@ -21,7 +21,7 @@
   "jquery": true,
 
   // Define globals exposed by Node.js.
-  "node": false,
+  "node": true,
 
   /*
    * TABS AND QUOTES
