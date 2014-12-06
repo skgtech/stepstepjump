@@ -1,4 +1,3 @@
-
 module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
@@ -77,7 +76,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          middleware: function(connect) {
+          middleware: function (connect) {
             return [
               connect.static('.tmp'),
               connect().use('/bower_components', connect.static('./bower_components')),
@@ -90,7 +89,7 @@ module.exports = function (grunt) {
         options: {
           open: false,
           port: 9001,
-          middleware: function(connect) {
+          middleware: function (connect) {
             return [
               connect.static('.tmp'),
               connect.static('test'),
@@ -111,14 +110,16 @@ module.exports = function (grunt) {
     // Empties folders to start fresh
     clean: {
       dist: {
-        files: [{
-                  dot: true,
-                  src: [
-                    '.tmp',
-                    '<%= config.dist %>/*',
-                    '!<%= config.dist %>/.git*'
-                  ]
-                }]
+        files: [
+          {
+            dot: true,
+            src: [
+              '.tmp',
+              '<%= config.dist %>/*',
+              '!<%= config.dist %>/.git*'
+            ]
+          }
+        ]
       },
       server: '.tmp'
     },
@@ -152,22 +153,26 @@ module.exports = function (grunt) {
         includePaths: ['bower_components']
       },
       dist: {
-        files: [{
-                  expand: true,
-                  cwd: '<%= config.app %>/styles',
-                  src: ['*.{scss,sass}'],
-                  dest: '.tmp/styles',
-                  ext: '.css'
-                }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/styles',
+            src: ['*.{scss,sass}'],
+            dest: '.tmp/styles',
+            ext: '.css'
+          }
+        ]
       },
       server: {
-        files: [{
-                  expand: true,
-                  cwd: '<%= config.app %>/styles',
-                  src: ['*.{scss,sass}'],
-                  dest: '.tmp/styles',
-                  ext: '.css'
-                }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/styles',
+            src: ['*.{scss,sass}'],
+            dest: '.tmp/styles',
+            ext: '.css'
+          }
+        ]
       }
     },
 
@@ -177,12 +182,14 @@ module.exports = function (grunt) {
         browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
       },
       dist: {
-        files: [{
-                  expand: true,
-                  cwd: '.tmp/styles/',
-                  src: '{,*/}*.css',
-                  dest: '.tmp/styles/'
-                }]
+        files: [
+          {
+            expand: true,
+            cwd: '.tmp/styles/',
+            src: '{,*/}*.css',
+            dest: '.tmp/styles/'
+          }
+        ]
       }
     },
 
@@ -251,23 +258,27 @@ module.exports = function (grunt) {
     // The following *-min tasks produce minified files in the dist folder
     imagemin: {
       dist: {
-        files: [{
-                  expand: true,
-                  cwd: '<%= config.app %>/images',
-                  src: '{,*/}*.{gif,jpeg,jpg,png}',
-                  dest: '<%= config.dist %>/images'
-                }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/images',
+            src: '{,*/}*.{gif,jpeg,jpg,png}',
+            dest: '<%= config.dist %>/images'
+          }
+        ]
       }
     },
 
     svgmin: {
       dist: {
-        files: [{
-                  expand: true,
-                  cwd: '<%= config.app %>/images',
-                  src: '{,*/}*.svg',
-                  dest: '<%= config.dist %>/images'
-                }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.app %>/images',
+            src: '{,*/}*.svg',
+            dest: '<%= config.dist %>/images'
+          }
+        ]
       }
     },
 
@@ -284,18 +295,19 @@ module.exports = function (grunt) {
           removeRedundantAttributes: true,
           useShortDoctype: true
         },
-        files: [{
-                  expand: true,
-                  cwd: '<%= config.dist %>',
-                  src: '{,*/}*.html',
-                  dest: '<%= config.dist %>'
-                }]
+        files: [
+          {
+            expand: true,
+            cwd: '<%= config.dist %>',
+            src: '{,*/}*.html',
+            dest: '<%= config.dist %>'
+          }
+        ]
       }
     },
 
     browserify: {
-      options: {
-      },
+      options: {},
       app: {
         files: {
           'app/scripts/app.src.js': ['jsapp/boot.js'],
@@ -332,27 +344,29 @@ module.exports = function (grunt) {
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
-        files: [{
-                  expand: true,
-                  dot: true,
-                  cwd: '<%= config.app %>',
-                  dest: '<%= config.dist %>',
-                  src: [
-                    '*.{ico,png,txt}',
-                    'images/{,*/}*.webp',
-                    '{,*/}*.html',
-                    'styles/fonts/{,*/}*.*'
-                  ]
-                }, {
-                  src: 'node_modules/apache-server-configs/dist/.htaccess',
-                  dest: '<%= config.dist %>/.htaccess'
-                }, {
-                  expand: true,
-                  dot: true,
-                  cwd: '.',
-                  src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-                  dest: '<%= config.dist %>'
-                }]
+        files: [
+          {
+            expand: true,
+            dot: true,
+            cwd: '<%= config.app %>',
+            dest: '<%= config.dist %>',
+            src: [
+              '*.{ico,png,txt}',
+              'images/{,*/}*.webp',
+              '{,*/}*.html',
+              'styles/fonts/{,*/}*.*'
+            ]
+          }, {
+            src: 'node_modules/apache-server-configs/dist/.htaccess',
+            dest: '<%= config.dist %>/.htaccess'
+          }, {
+            expand: true,
+            dot: true,
+            cwd: '.',
+            src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+            dest: '<%= config.dist %>'
+          }
+        ]
       },
       styles: {
         expand: true,
