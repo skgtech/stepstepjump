@@ -12,7 +12,7 @@
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="../styles/main.css">
   <!-- endbuild -->
 </head>
 <body>
@@ -24,18 +24,7 @@
 <div class="site-wrapper">
   <div class="wrapper-inner">
     <div class="cover-container">
-      <div class="masthead clearfix">
-        <div class="inner">
-          <h3 class="masthead-brand">stepstepjump</h3>
-          <nav>
-            <ul class="nav masthead-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Hall of Fame</a></li>
-              <li><a href="#">Help</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+      <% include layout/header.ejs %>
 
       <div class="inner cover">
         <h1 class="cover-heading">Hall of Fame</h1>
@@ -56,13 +45,7 @@
         </table>
       </div>
 
-      <div class="mastfoot">
-        <div class="inner">
-          <p>A <a href="http://koding.com/Hackathon">Koding.com Hackathon Project</a> by <a
-            href="https://github.com/skgtech/global.hackathon/blob/master/Teams/SKGers/ABOUT.md">SKGers</a>, <a
-            href="http://github.com/skgtech/stepstepjump" title="Step Step Jump!">Source</a></p>
-        </div>
-      </div>
+      <% include layout/footer.ejs %>
     </div>
   </div>
 </div>
@@ -84,7 +67,7 @@
 </script>
 
 <!-- build:js({app,.tmp}) scripts/main.js -->
-<script src="scripts/app.src.js"></script>
+<script src="../app/scripts/app.src.js"></script>
 <!-- endbuild -->
 </body>
 </html>
