@@ -375,7 +375,8 @@ module.exports = function (grunt) {
           remote: 'git@github.com:skgtech/stepstepjump.git',
           branch: 'gh-pages',
           commit: true,
-          push: true
+          push: true,
+          dir: 'dist',
         }
       }
     },
