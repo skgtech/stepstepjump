@@ -28,7 +28,7 @@
     "test": "./node_modules/.bin/grunt test"
   },
   "dependencies": {
-    "cip": "~0.2.5",
+    "cip": "^0.2.5",
     "bluebird": "~2.3.0",
     "lodash": "~2.4.1",
     "underscore": "^1.7.0"
