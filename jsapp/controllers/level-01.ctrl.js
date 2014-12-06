@@ -3,6 +3,7 @@
  */
 
 var Vector = require('../vector/main.vector');
+var Level = require('../level/level.base');
 
 /**
  * Level 01 controller.
@@ -10,7 +11,6 @@ var Vector = require('../vector/main.vector');
  * @constructor
  */
 var Level01 = module.exports = function () {
-  this.vector = new Vector();
 };
 
 /**
@@ -18,7 +18,12 @@ var Level01 = module.exports = function () {
  *
  */
 Level01.prototype.init = function() {
-  this.vector.makeLine(50,200, 500, 200);
+
+  this.vector = new Vector();
+
+  this.level = new Level(this.vector);
+
+  this.level.makeLine(50,200, 500, 200);
 
   this.vector.update();
 };
