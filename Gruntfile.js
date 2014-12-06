@@ -368,7 +368,17 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
-    }
+    },
+    buildcontrol: {
+      dist: {
+        options: {
+          remote: 'git@github.com:skgtech/stepstepjump.git',
+          branch: 'gh-pages',
+          commit: true,
+          push: true
+        }
+      }
+    },
   });
 
 
@@ -432,4 +442,11 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('deploy', [
+    'test',
+    'build',
+    'buildcontrol'
+  ]);
+
 };
