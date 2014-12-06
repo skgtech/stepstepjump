@@ -1,13 +1,6 @@
 /**
  * @fileOverview The master bootstrap file of the frontend application.
  */
-var ScoreModel = require('./models/score.model.js');
-console.log('Allo!');
+var parseService = require('./services/parse.service');
 
-var score = new ScoreModel.Score();
-//score.save({
-//    'user': 'foo',
-//    'score': 1200
-//}).then(function() {
-//  console.log('yay! it worked');
-//});
+parseService.init();
