@@ -1,7 +1,6 @@
 /**
  * @fileOverview Some two.js samples to get us going...
  */
-var Two = require('two.js');
 
 var two = module.exports = {};
 
@@ -11,7 +10,7 @@ var two = module.exports = {};
  */
 two.init = function() {
   // Make an instance of two and place it on the page.
-  var elem = document.getElementById('draw-shapes').children[0];
+  var elem = document.getElementById('draw-shapes');
   var params = { width: 285, height: 200 };
   var two = new Two(params).appendTo(elem);
 
