@@ -8,7 +8,7 @@ var Base = require('./base');
  * The line component.
  *
  * @constructor
- * @extends {app.vector.component.Base}
+ * @extends {app.level.component.Base}
  */
 var Line = module.exports = Base.extend(function() {
   this.type = Base.Type.LINE;

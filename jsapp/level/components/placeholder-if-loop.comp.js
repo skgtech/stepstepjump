@@ -8,7 +8,7 @@ var Base = require('./base');
  * The Placeholder If Loop component.
  *
  * @constructor
- * @extends {app.vector.component.Base}
+ * @extends {app.level.component.Base}
  */
 var IfLoop = module.exports = Base.extend(function() {
   this.type = Base.Type.PLACEHOLDER_IF_LOOP;
@@ -34,6 +34,15 @@ IfLoop.prototype.draw = function(x1, y1) {
  * @param {number} value The value to calculate.
  * @return {number|boolean} The result depending on type.
  */
-IfLoop.prototype.calculate = function(value) {
+IfLoop.prototype.calculate = function(/* value */) {
+
+};
+
+/**
+ * Plug in a UI-Component to attach behaviors to this component.
+ *
+ * @param {app.level.Component} component The UI-components.
+ */
+IfLoop.prototype.plug = function(/* component */) {
 
 };

@@ -11,7 +11,7 @@ var cip = require('cip');
  * @constructor
  */
 var Component = module.exports = cip.extend(function (vector) {
-  /** @type {?app.vector.component.Base.Type} the type */
+  /** @type {?app.level.component.Base.Type} the type */
   this.type = null;
 
   /** @type {app.Vector} vector The vector instance */
@@ -47,7 +47,7 @@ Component.prototype.draw = function(/* x1, y1 */) {
 /**
  * Get the type of the component.
  *
- * @return {app.vector.component.Base.Type} The type.
+ * @return {app.level.component.Base.Type} The type.
  */
 Component.prototype.getType = function() {
   return this.type;
