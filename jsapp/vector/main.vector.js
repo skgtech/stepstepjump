@@ -14,6 +14,7 @@ var Vector = module.exports = function() {
   var elem = document.getElementById('draw-shapes');
   var params = {
     fullscreen: true,
+    autostart: true,
   };
   /** @type {Two} Local instance of Two. */
   this.two = new Two(params).appendTo(elem);
