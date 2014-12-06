@@ -10,9 +10,12 @@ var cip = require('cip');
  *
  * @constructor
  */
-var Component = module.exports = cip.extend(function () {
+var Component = module.exports = cip.extend(function (vector) {
   /** @type {?app.vector.component.Base.Type} the type */
   this.type = null;
+
+  /** @type {app.Vector} vector The vector instance */
+  this.vector = vector;
 
   /** @type {?number} Pos x */
   this.x1 = null;
@@ -29,6 +32,17 @@ Component.Type = {
   OPERATION: 'operation',
   IF_LOOP: 'ifLoop',
 };
+
+/**
+ * Draw the component on the underlying vector library.
+ *
+ * @param {number} x1 The x1 position.
+ * @param {number} y1 The y1 position.
+ */
+Component.prototype.draw = function(/* x1, y1 */) {
+  throw new Error('Not Implemented');
+};
+
 
 /**
  * Get the type of the component.
