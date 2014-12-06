@@ -11,8 +11,14 @@ var two = module.exports = {};
 two.init = function() {
   // Make an instance of two and place it on the page.
   var elem = document.getElementById('draw-shapes');
-  var params = { width: 285, height: 200 };
+  var params = {
+    fullscreen: true,
+  };
   var two = new Two(params).appendTo(elem);
+
+  var ln1 = two.makeLine(50,100, 500, 100);
+  ln1.stroke = '#333';
+  ln1.linewidth = 10;
 
   // two has convenience methods to create shapes.
   var circle = two.makeCircle(72, 100, 50);

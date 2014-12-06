@@ -4,6 +4,8 @@
 var parseService = require('./services/parse.service');
 parseService.init();
 
+var Level01 = require('./controllers/level-01.ctrl');
 
-var two = require('./sandbox/two-js-sample');
-two.init();
+
+var level01 = new Level01();
+level01.init();
