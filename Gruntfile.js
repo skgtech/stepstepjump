@@ -1,8 +1,3 @@
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// If you want to recursively match all subfolders, use:
-// 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
 
@@ -52,7 +47,7 @@ module.exports = function (grunt) {
         tasks: ['sass:server', 'autoprefixer']
       },
       ejs: {
-        files: ['template/*.ejs'],
+        files: ['templates/*.ejs'],
         tasks: ['ejs']
       },
       styles: {
@@ -117,13 +112,13 @@ module.exports = function (grunt) {
     clean: {
       dist: {
         files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= config.dist %>/*',
-            '!<%= config.dist %>/.git*'
-          ]
-        }]
+                  dot: true,
+                  src: [
+                    '.tmp',
+                    '<%= config.dist %>/*',
+                    '!<%= config.dist %>/.git*'
+                  ]
+                }]
       },
       server: '.tmp'
     },
@@ -150,17 +145,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Parse and compile .ejs Templates
-    ejs: {
-      all: {
-        src: ['*.ejs'],
-        dest: '<%= config.app %>',
-        expand: true,
-        ext: '.html',
-        cwd: 'templates'
-      }
-    },
-
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
       options: {
@@ -169,21 +153,21 @@ module.exports = function (grunt) {
       },
       dist: {
         files: [{
-          expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
+                  expand: true,
+                  cwd: '<%= config.app %>/styles',
+                  src: ['*.{scss,sass}'],
+                  dest: '.tmp/styles',
+                  ext: '.css'
+                }]
       },
       server: {
         files: [{
-          expand: true,
-          cwd: '<%= config.app %>/styles',
-          src: ['*.{scss,sass}'],
-          dest: '.tmp/styles',
-          ext: '.css'
-        }]
+                  expand: true,
+                  cwd: '<%= config.app %>/styles',
+                  src: ['*.{scss,sass}'],
+                  dest: '.tmp/styles',
+                  ext: '.css'
+                }]
       }
     },
 
@@ -194,11 +178,11 @@ module.exports = function (grunt) {
       },
       dist: {
         files: [{
-          expand: true,
-          cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
-          dest: '.tmp/styles/'
-        }]
+                  expand: true,
+                  cwd: '.tmp/styles/',
+                  src: '{,*/}*.css',
+                  dest: '.tmp/styles/'
+                }]
       }
     },
 
@@ -206,12 +190,23 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.app %>/**/*.html'],
+        src: ['<%= config.app %>/index.html'],
         exclude: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js']
       },
       sass: {
         src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
+      }
+    },
+
+    // Parse and compile .ejs Templates
+    ejs: {
+      all: {
+        src: ['*.ejs'],
+        dest: '<%= config.app %>',
+        expand: true,
+        ext: '.html',
+        cwd: 'templates'
       }
     },
 
@@ -237,7 +232,7 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= config.dist %>'
       },
-      html: '<%= config.app %>/*.html'
+      html: ['<%= config.app %>/*.html']
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -257,22 +252,22 @@ module.exports = function (grunt) {
     imagemin: {
       dist: {
         files: [{
-          expand: true,
-          cwd: '<%= config.app %>/images',
-          src: '{,*/}*.{gif,jpeg,jpg,png}',
-          dest: '<%= config.dist %>/images'
-        }]
+                  expand: true,
+                  cwd: '<%= config.app %>/images',
+                  src: '{,*/}*.{gif,jpeg,jpg,png}',
+                  dest: '<%= config.dist %>/images'
+                }]
       }
     },
 
     svgmin: {
       dist: {
         files: [{
-          expand: true,
-          cwd: '<%= config.app %>/images',
-          src: '{,*/}*.svg',
-          dest: '<%= config.dist %>/images'
-        }]
+                  expand: true,
+                  cwd: '<%= config.app %>/images',
+                  src: '{,*/}*.svg',
+                  dest: '<%= config.dist %>/images'
+                }]
       }
     },
 
@@ -290,11 +285,11 @@ module.exports = function (grunt) {
           useShortDoctype: true
         },
         files: [{
-          expand: true,
-          cwd: '<%= config.dist %>',
-          src: '{,*/}*.html',
-          dest: '<%= config.dist %>'
-        }]
+                  expand: true,
+                  cwd: '<%= config.dist %>',
+                  src: '{,*/}*.html',
+                  dest: '<%= config.dist %>'
+                }]
       }
     },
 
@@ -338,26 +333,26 @@ module.exports = function (grunt) {
     copy: {
       dist: {
         files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= config.app %>',
-          dest: '<%= config.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            'images/{,*/}*.webp',
-            '{,*/}*.html',
-            'styles/fonts/{,*/}*.*'
-          ]
-        }, {
-          src: 'node_modules/apache-server-configs/dist/.htaccess',
-          dest: '<%= config.dist %>/.htaccess'
-        }, {
-          expand: true,
-          dot: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= config.dist %>'
-        }]
+                  expand: true,
+                  dot: true,
+                  cwd: '<%= config.app %>',
+                  dest: '<%= config.dist %>',
+                  src: [
+                    '*.{ico,png,txt}',
+                    'images/{,*/}*.webp',
+                    '{,*/}*.html',
+                    'styles/fonts/{,*/}*.*'
+                  ]
+                }, {
+                  src: 'node_modules/apache-server-configs/dist/.htaccess',
+                  dest: '<%= config.dist %>/.htaccess'
+                }, {
+                  expand: true,
+                  dot: true,
+                  cwd: '.',
+                  src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+                  dest: '<%= config.dist %>'
+                }]
       },
       styles: {
         expand: true,
@@ -413,7 +408,6 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      'ejs',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
