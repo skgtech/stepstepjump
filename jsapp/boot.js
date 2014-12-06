@@ -3,3 +3,7 @@
  */
 
 console.log('Allo!');
+
+
+var two = require('./sandbox/two-js-sample');
+two.init();

@@ -127,6 +127,8 @@
    *
    */
   "globals": {
+    "Two": false,
+
     /* MOCHA */
     "suite": false,
     "test": false,

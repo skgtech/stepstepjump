@@ -1,0 +1,21 @@
+$gray-base:              #020122;
+$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:              lighten($gray-base, 20%) !default;   // #333
+$gray:                   lighten($gray-base, 33.5%) !default; // #555
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+
+$brand-primary:         darken(#ff6600, 6.5%);
+$brand-success:         #5cb85c;
+$brand-info:            #5bc0de;
+$brand-warning:         #f0ad4e;
+$brand-danger:          #d9534f;
+
+$body-bg:               #eee;
+$text-color:            $gray-dark;
+
+$link-color:            $brand-primary;
+$link-hover-color:      darken($link-color, 15%);
+$link-hover-decoration: underline;
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
