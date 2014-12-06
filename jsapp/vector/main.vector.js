@@ -34,6 +34,9 @@ var Vector = module.exports = function() {
     this.zui.zoomBy(dy, e.clientX, e.clientY);
 
   }.bind(this));
+
+  console.log('width:', this.two.width);
+  console.log('height:', this.two.height);
 };
 
 /**
@@ -48,7 +51,7 @@ var Vector = module.exports = function() {
 Vector.prototype.makeLine = function(x1, y1, x2, y2) {
   var ln = this.two.makeLine(x1, y1, x2, y2);
   ln.stroke = '#333';
-  ln.linewidth = 10;
+  ln.linewidth = 6;
   return ln;
 };
 
