@@ -16,7 +16,11 @@ var Level = cip.extend(function (vector) {
   this.vector = vector;
 
   /** @type {Array} The internal level design */
-  this.struct = [];
+  this.struct = [
+    line1,
+    op2,
+    ifLoop3, --> op1, op2, op3
+  ];
 });
 
 /**
@@ -48,6 +52,28 @@ Level.prototype.makeLine = function(x1, x2, y1, y2) {
  * @return {self} Chainable
  */
 Level.prototype.makePlaceholderIf = function(params) {
+  var placeholderIf = new PlaceholderIf(this.vector);
+
+  placeholderIf.draw(params.x1, params.y1);
+
+  this.struct.push(placeholderIf);
+  this.struct.push([params.routeZero, params.routeOne]);
+
+  return this;
+};
+
+
+/**
+ * Draw the Placeholder IF.
+ *
+ * @param {Object} params The required parameters.
+ *   @param {number} x1 The x1 position.
+ *   @param {number} y1 The y1 position.
+ *   @param {app.Level} routeZero The route on zero outcome.
+ *   @param {app.Level} routeLoop The route on one outcome.
+ * @return {self} Chainable
+ */
+Level.prototype.makePlaceholderIfLoop = function(params) {
   var placeholderIf = new PlaceholderIf(this.vector);
 
   placeholderIf.draw(params.x1, params.y1);

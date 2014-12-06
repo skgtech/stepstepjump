@@ -59,11 +59,14 @@ Component.prototype.getType = function() {
  * @return {Array} The type.
  */
 Component.prototype.getPosition = function() {
-  throw new Error('Not Implemented');
+  return [
+    this.x1,
+    this.y1,
+  ];
 };
 
 /**
- * Calculate the outcome of passign through this component.
+ * Calculate the outcome of passing through this component.
  *
  * @param {number} value The value to calculate.
  * @return {number|boolean} The result depending on type.

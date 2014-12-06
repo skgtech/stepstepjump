@@ -21,9 +21,22 @@ Level01.prototype.init = function() {
 
   this.vector = new Vector();
 
-  this.level = new Level(this.vector);
+  var levelPart1 = new Level(this.vector);
+  var levelPartLoop1 = new Level(this.vector);
 
-  this.level.makeLine(50,200, 500, 200);
+  levelPartLoop1.makePlaceholderOperation(600, 400);
+  levelPartLoop1.makePlaceholderOperation(650, 420);
+
+  var level = new Level(this.vector);
+
+  level.makeLine(50,200, 500, 200);
+
+  level.makePlaceholderIfLoop({
+    x1: 500,
+    y1: 200,
+    routeZero: levelPart1,
+    routeLoop: levelPartLoop1,
+  });
 
   this.vector.update();
 };
