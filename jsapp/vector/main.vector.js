@@ -1,6 +1,8 @@
 /**
  * @fileOverview The base abstraction for vector graphics.
  */
+var ZUI = require('./zoom/zui.vector');
+var $ = require('../../bower_components/jquery/dist/jquery');
 
 /**
  * The base abstraction for vector graphics.
@@ -15,6 +17,22 @@ var Vector = module.exports = function() {
   };
   /** @type {Two} Local instance of Two. */
   this.two = new Two(params).appendTo(elem);
+
+
+  this.zui = new ZUI(this.two);
+  this.zui.addLimits(0.06, 8);
+  var $stage = $('body');
+  $stage.bind('mousewheel', function(event) {
+
+    var e = event.originalEvent;
+    e.stopPropagation();
+    e.preventDefault();
+
+    var dy = e.wheelDeltaY / 1000;
+
+    this.zui.zoomBy(dy, e.clientX, e.clientY);
+
+  }.bind(this));
 };
 
 /**
