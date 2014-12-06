@@ -54,7 +54,6 @@
       <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
-
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -67,8 +66,12 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/app.src.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({bower_components,.tmp}) scripts/vendor.js -->
+    <script src="/bower_components/two.js/build/two.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/app.src.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
