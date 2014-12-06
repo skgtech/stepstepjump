@@ -47,7 +47,7 @@ module.exports = function (grunt) {
         tasks: ['sass:server', 'autoprefixer']
       },
       ejs: {
-        files: ['templates/*.ejs'],
+        files: ['templates/**/*.ejs'],
         tasks: ['ejs']
       },
       styles: {
