@@ -27,4 +27,3 @@ For the browserify frontend applications the sequence of preference for requirin
 ### Styles
 
 For Third Party style requirements (e.g. Bootstrap) use **Bower**.
-
