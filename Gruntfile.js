@@ -51,6 +51,10 @@ module.exports = function (grunt) {
         files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['sass:server', 'autoprefixer']
       },
+      ejs: {
+        files: ['template/*.ejs'],
+        tasks: ['ejs']
+      },
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -71,7 +75,7 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: 9000,
-        open: true,
+        open: false,
         livereload: 35729,
         // Change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
@@ -146,6 +150,16 @@ module.exports = function (grunt) {
       }
     },
 
+    // Parse and compile .ejs Templates
+    ejs: {
+      all: {
+        src: ['templates/index.ejs', 'templates/board.ejs'],
+        dest: 'app/',
+        expand: true,
+        ext: '.html'
+      }
+    },
+
     // Compiles Sass to CSS and generates necessary files if requested
     sass: {
       options: {
@@ -191,7 +205,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.app %>/index.html'],
+        src: ['<%= config.app %>/**/*.html'],
         exclude: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js']
       },
       sass: {
@@ -222,7 +236,7 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= config.dist %>'
       },
-      html: '<%= config.app %>/index.html'
+      html: '<%= config.app %>/**/*.html'
     },
 
     // Performs rewrites based on rev and the useminPrepare configuration
@@ -398,6 +412,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'ejs',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -433,6 +448,7 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
+    'ejs',
     'concat',
     'cssmin',
     'uglify',
