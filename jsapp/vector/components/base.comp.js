@@ -11,7 +11,13 @@ var cip = require('cip');
  * @constructor
  */
 var Component = module.exports = cip.extend(function () {
+  /** @type {?app.vector.component.Base.Type} the type */
+  this.type = null;
 
+  /** @type {?number} Pos x */
+  this.x1 = null;
+  /** @type {?number} Pos y */
+  this.y1 = null;
 });
 
 /** @enum {string} The component types */
@@ -30,7 +36,7 @@ Component.Type = {
  * @return {app.vector.component.Base.Type} The type.
  */
 Component.prototype.getType = function() {
-  throw new Error('Not Implemented');
+  return this.type;
 };
 
 /**
