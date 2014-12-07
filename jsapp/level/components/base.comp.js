@@ -87,9 +87,14 @@ Component.prototype.getPosition = function() {
  * @param {number} value The value to calculate.
  * @return {number|boolean} The result depending on type.
  */
-Component.prototype.calculate = function(/* arg */) {
-  throw new Error('Not Implemented');
-};
+Component.prototype.calculate = function(value) {
+  switch(this.operation) {
+    case Component.Operation.ADD:
+      return value + this.num;
+      break;
+ }
+}
+
 
 /**
  * Get the CPU Cost of this component.
