@@ -6,6 +6,7 @@ var cip = require('cip');
 var Line = require('./components/line.comp');
 var If = require('./components/if.comp');
 var IfLoop = require('./components/ifLoop.comp');
+var Operation = require('./components/operation.comp');
 
 /**
  * The base level designer.
@@ -75,6 +76,24 @@ Level.prototype.makeIfLoop = function(x1, y1, x2, y2, x3, y3) {
   ifLoop.draw(x1, y1, x2, y2, x3, y3);
 
   this.struct.push(ifLoop);
+
+  return this;
+};
+
+/**
+ * Draw an Operation on the underlying vector library.
+ *
+ * @param {number} x1 The x1 position.
+ * @param {number} y1 The y1 position.
+ * @param {number} w The width.
+ * @param {number} h The height.
+ * @return {self} Chainable.
+ */
+Level.prototype.makeOperation = function(x, y, w, h) {
+  var op = new Operation(this.vector);
+  op.draw(x, y, w, h);
+
+  this.struct.push(op);
 
   return this;
 };

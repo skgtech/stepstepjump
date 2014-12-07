@@ -33,6 +33,8 @@ Level01.prototype.init = function() {
   level.makeIf(100, 60, 130, 80, 130, 40);
   level.makeLine(130, 60, 180, 240);
   level.makeIfLoop(180, 240, 210, 260, 210, 220);
+  level.makeLine(210, 260, 310, 220);
+  level.makeOperation(310, 220, 50, 50);
 
 //  level.makePlaceholderIfLoop({
 //    x1: 500,
