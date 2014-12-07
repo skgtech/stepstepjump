@@ -79,8 +79,8 @@ Vector.prototype.makePolygon = function(x1, y1, x2, y2, x3, y3) {
  * @param {number} h The height.
  * @return {Two.polygon} The polygon object.
  */
-Vector.prototype.makeRectangle = function(x, y, w, h) {
-  var rec = this.two.makeRectangle(x, y, w, h);
+Vector.prototype.makeRectangle = function(x1, y1, w, h) {
+  var rec = this.two.makeRectangle(x1, y1, w, h);
   return rec;
 };
 

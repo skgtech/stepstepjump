@@ -22,18 +22,18 @@ var Operation = module.exports = Base.extend(function () {
 /**
  * Draw the component on the underlying vector library.
  *
- * @param {number} x The x position.
- * @param {number} y The y position.
+ * @param {number} x1 The x1 position.
+ * @param {number} y1 The y1 position.
  * @param {number} w  The width.
  * @param {number} h The height.
  */
-Operation.prototype.draw = function (x, y, w, h) {
-  this.x = x;
-  this.y = y;
+Operation.prototype.draw = function (x1, y1, w, h) {
+  this.x1 = x1;
+  this.y1 = y1;
   this.w = w;
   this.h = h;
 
-  this.vector.makeRectangle(x, y, w, h);
+  this.vector.makeRectangle(x1, y1, w, h);
 };
 
 /**

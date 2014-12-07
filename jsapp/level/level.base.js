@@ -89,9 +89,9 @@ Level.prototype.makeIfLoop = function(x1, y1, x2, y2, x3, y3) {
  * @param {number} h The height.
  * @return {self} Chainable.
  */
-Level.prototype.makeOperation = function(x, y, w, h) {
+Level.prototype.makeOperation = function(x1, y1, w, h) {
   var op = new Operation(this.vector);
-  op.draw(x, y, w, h);
+  op.draw(x1, y1, w, h);
 
   this.struct.push(op);
 
