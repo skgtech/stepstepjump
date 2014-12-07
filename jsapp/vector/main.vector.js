@@ -3,6 +3,7 @@
  */
 var ZUI = require('./zoom/zui.vector');
 var $ = require('../../bower_components/jquery/dist/jquery');
+require('jquery-mousewheel')($);
 
 /**
  * The base abstraction for vector graphics.
@@ -23,13 +24,11 @@ var Vector = module.exports = function() {
   this.zui = new ZUI(this.two);
   this.zui.addLimits(0.06, 8);
   var $stage = $('body');
-  $stage.bind('mousewheel', function(event) {
-
-    var e = event.originalEvent;
+  $stage.bind('mousewheel', function(e) {
     e.stopPropagation();
     e.preventDefault();
 
-    var dy = e.wheelDeltaY / 1000;
+    var dy = e.deltaY / 10;
 
     this.zui.zoomBy(dy, e.clientX, e.clientY);
 
