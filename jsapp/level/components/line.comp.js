@@ -33,7 +33,7 @@ Line.prototype.draw = function(x1, y1, x2, y2) {
   this.x2 = x2;
   this.y2 = y2;
 
-  this.vector.two.makeLine(x1, y1, x2, y2);
+  this.vector.makeLine(x1, y1, x2, y2);
 };
 
 /**
