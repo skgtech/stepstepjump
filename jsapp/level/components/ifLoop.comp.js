@@ -33,16 +33,16 @@ var IfLoop = module.exports = Base.extend(function() {
  * @param {number} x3 The x3 position.
  * @param {number} y3 The y3 position.
  */
-IfLoop.prototype.draw = function(x1, y1, x2, y2, x3, y3) {
+IfLoop.prototype.draw = function(x1, y1) {
   this.x1 = x1;
   this.y1 = y1;
-  this.x2 = x2;
-  this.y2 = y2;
-  this.x3 = x3;
-  this.y3 = y3;
+  this.x2 = x1 + 30;
+  this.y2 = y1 - 30;
+  this.x3 = x1 + 30;
+  this.y3 = y1 + 30;
 
-  this.vector.makePolygon(x1, y1, x2, y2, x3, y3);
-  this.vector.two.makeCircle(x1 + (x2 - x1) / 2, y2 + (y3 - y2), (x2 - x1) / 2);
+  this.vector.makePolygon(this.x1,  this.y1, this.x2, this.y2, this.x3, this.y3);
+  this.vector.two.makeCircle(this.x1 + (this.x2 - this.x1) / 2, this.y2 + (this.y3 - this.y2), (this.x2 - this.x1) / 2);
 };
 
 /**
