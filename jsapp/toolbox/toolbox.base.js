@@ -20,6 +20,10 @@ var Toolbox = module.exports = function (vector) {
   this.x = vector.getCanvasWidth() - this.width;
   /** @type {number} y The center y coordinate */
   this.y = this.height / 2;
+  /** @type {boolean} isReadyToDock True when a component is selected to be plugged */
+  this.isReadyToDock = false;
+  /** @type{?app.leve.component.Base} */
+  this.compToDock = null;
 };
 
 /**
@@ -58,7 +62,14 @@ Toolbox.prototype.draw = function() {
 
   var that = this;
   $(window).bind('click', function(e) {
-    console.log(that.containsPoint(e.clientX, e.clientY));
+    if(that.containsPoint(e.clientX, e.clientY)) {
+      var comp = level.getComponentAt(e.clientX, e.clientY);
+      if(comp) {
+        that.isReadyToDock = true;
+        that.compToDock = comp;
+      }
+    }
+
   });
 };
 

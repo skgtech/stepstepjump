@@ -5,6 +5,7 @@
 var Vector = require('../vector/main.vector');
 var Level = require('../level/level.base');
 var Toolbox = require('../toolbox/toolbox.base');
+var $ = require('../../bower_components/jquery/dist/jquery');
 
 /**
  * Level 01 controller.
@@ -32,6 +33,17 @@ Level01.prototype.init = function() {
 
   var level = new Level(this.vector);
   var toolbox = new Toolbox(this.toolboxVector);
+
+  $(window).bind('click', function(e) {
+      var comp = level.getComponentAt(e.clientX, e.clientY);
+      if(comp && toolbox.isReadyToDock) {
+        console.log('Placeholder:');
+        console.log(comp);
+        console.log('Component:');
+        console.log(toolbox.compToDock);
+        toolbox.isReadyToDock = false;
+      }
+    });
 
   toolbox.draw();
 
