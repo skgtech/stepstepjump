@@ -53,7 +53,7 @@ Level.prototype.makeIf = function(x1, y1, x2, y2, x3, y3) {
   var triangle = new If(this.vector);
   triangle.draw(x1, y1, x2, y2, x3, y3);
 
-  this.struct.push(line);
+  this.struct.push(triangle);
 
   return this;
 };
