@@ -55,4 +55,3 @@ If.prototype.getPosition = function() {
     this.y1,
   ];
 };
-
