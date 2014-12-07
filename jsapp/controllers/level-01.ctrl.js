@@ -30,8 +30,8 @@ Level01.prototype.init = function() {
 //  levelPartLoop1.makePlaceholderOperation(600, 400);
 //  levelPartLoop1.makePlaceholderOperation(650, 420);
 
-  var level = new Level(this.vector),
-      toolbox = new Toolbox(this.toolboxVector);
+  var level = new Level(this.vector);
+  var toolbox = new Toolbox(this.toolboxVector);
 
   toolbox.draw();
 
