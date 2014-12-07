@@ -71,6 +71,20 @@ Vector.prototype.makePolygon = function(x1, y1, x2, y2, x3, y3) {
 };
 
 /**
+ * Will make a rectangle.
+ *
+ * @param {number} x1 The x1 position.
+ * @param {number} y1 The y1 position.
+ * @param {number} w The width.
+ * @param {number} h The height.
+ * @return {Two.polygon} The polygon object.
+ */
+Vector.prototype.makeRectangle = function(x1, y1, w, h) {
+  var rec = this.two.makeRectangle(x1, y1, w, h);
+  return rec;
+};
+
+/**
  * Wraps two.update;
  */
 Vector.prototype.update = function () {
