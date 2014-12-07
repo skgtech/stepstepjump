@@ -5,7 +5,7 @@
 var Base = require('./base.comp');
 
 /**
- * The Placeholder If Loop component.
+ * The Operation component.
  *
  * @constructor
  * @extends {app.level.component.Base}
