@@ -24,8 +24,11 @@ Ball.prototype.run = function(level) {
 
     switch(component.getType()) {
     case Component.Type.IF:
+
     case Component.Type.IF_LOOP:
+
     case Component.Type.PLACEHOLDER_IF:
+
     case Component.Type.PLACEHOLDER_IF_LOOP:
       res = component.calculate(this.value);
       next = index + 1;
