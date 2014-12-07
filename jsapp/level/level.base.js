@@ -45,15 +45,11 @@ Level.prototype.makeLine = function(x1, x2, y1, y2) {
  *
  * @param {number} x1 The x1 position.
  * @param {number} y1 The y1 position.
- * @param {number} x2 The x2 position.
- * @param {number} y2 The y2 position.
- * @param {number} x3 The x3 position.
- * @param {number} y3 The y3 position.
  * @return {self} Chainable.
  */
-Level.prototype.makeIf = function(x1, y1, x2, y2, x3, y3) {
+Level.prototype.makeIf = function(x1, y1) {
   var triangle = new If(this.vector);
-  triangle.draw(x1, y1, x2, y2, x3, y3);
+  triangle.draw(x1, y1);
 
   this.struct.push(triangle);
 
@@ -65,15 +61,11 @@ Level.prototype.makeIf = function(x1, y1, x2, y2, x3, y3) {
  *
  * @param {number} x1 The x1 position.
  * @param {number} y1 The y1 position.
- * @param {number} x2 The x2 position.
- * @param {number} y2 The y2 position.
- * @param {number} x3 The x3 position.
- * @param {number} y3 The y3 position.
  * @return {self} Chainable.
  */
-Level.prototype.makeIfLoop = function(x1, y1, x2, y2, x3, y3) {
+Level.prototype.makeIfLoop = function(x1, y1) {
   var ifLoop = new IfLoop(this.vector);
-  ifLoop.draw(x1, y1, x2, y2, x3, y3);
+  ifLoop.draw(x1, y1);
 
   this.struct.push(ifLoop);
 
@@ -89,9 +81,9 @@ Level.prototype.makeIfLoop = function(x1, y1, x2, y2, x3, y3) {
  * @param {number} h The height.
  * @return {self} Chainable.
  */
-Level.prototype.makeOperation = function(x1, y1, w, h) {
+Level.prototype.makeOperation = function(x1, y1) {
   var op = new Operation(this.vector);
-  op.draw(x1, y1, w, h);
+  op.draw(x1, y1);
 
   this.struct.push(op);
 
