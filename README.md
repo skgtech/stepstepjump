@@ -22,11 +22,6 @@ npm install
 bower install
 ```
 
-## Release History
-
-- **v0.0.1**, *TBD*
-    - Big Bang
-
 ## License
 
 Copyright (c) 2014 SKGTech. Licensed under the [Mozilla Public License](LICENSE).
