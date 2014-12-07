@@ -41,11 +41,11 @@ If.prototype.draw = function(x1, y1, x2, y2, x3, y3) {
   this.x3 = x3;
   this.y3 = y3;
 
-  this.vector.two.makePolygon(x1, y1, x2, y2, x3, y3, false);
+  this.vector.makePolygon(x1, y1, x2, y2, x3, y3);
 };
 
 /**
- * Get the position of the component.
+ * Get the position of the component. Left most middle height point.
  *
  * @return {Array} The type.
  */
@@ -53,10 +53,6 @@ If.prototype.getPosition = function() {
   return [
     this.x1,
     this.y1,
-    this.x2,
-    this.y2,
-    this.x3,
-    this.y3,
   ];
 };
 

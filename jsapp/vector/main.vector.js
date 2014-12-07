@@ -55,6 +55,22 @@ Vector.prototype.makeLine = function(x1, y1, x2, y2) {
 };
 
 /**
+ * Will make a triangle.
+ *
+ * @param {number} x1 The x1 position.
+ * @param {number} y1 The y1 position.
+ * @param {number} x2 The x2 position.
+ * @param {number} y2 The y2 position.
+ * @param {number} x3 The x3 position.
+ * @param {number} y3 The y3 position.
+ * @return {Two.polygon} The polygon object.
+ */
+Vector.prototype.makePolygon = function(x1, y1, x2, y2, x3, y3) {
+  var tr = this.two.makePolygon(x1, y1, x2, y2, x3, y3, false);
+  return tr;
+};
+
+/**
  * Wraps two.update;
  */
 Vector.prototype.update = function () {
