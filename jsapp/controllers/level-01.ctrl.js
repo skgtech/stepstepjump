@@ -4,6 +4,7 @@
 
 var Vector = require('../vector/main.vector');
 var Level = require('../level/level.base');
+var Toolbox = require('../toolbox/toolbox.base');
 
 /**
  * Level 01 controller.
@@ -19,7 +20,9 @@ var Level01 = module.exports = function () {
  */
 Level01.prototype.init = function() {
 
-  this.vector = new Vector();
+  this.vector = new Vector(true);
+
+  this.toolboxVector = new Vector();
 
 //  var levelPart1 = new Level(this.vector);
 //  var levelPartLoop1 = new Level(this.vector);
@@ -27,7 +30,10 @@ Level01.prototype.init = function() {
 //  levelPartLoop1.makePlaceholderOperation(600, 400);
 //  levelPartLoop1.makePlaceholderOperation(650, 420);
 
-  var level = new Level(this.vector);
+  var level = new Level(this.vector),
+      toolbox = new Toolbox(this.toolboxVector);
+
+  toolbox.draw();
 
   level.makeLine(50, 60, 100, 60);
   level.makeIf(100, 60, 130, 80, 130, 40);
