@@ -11,7 +11,7 @@ var Base = require('./base.comp');
  * @extends {app.level.component.Base}
  */
 var If = module.exports = Base.extend(function() {
-  this.type = Base.Type.IF;
+  this.type = Base.Type.PLACEHOLDER_IF;
 
   /** @type {?number} Pos x2 */
   this.x2 = null;
@@ -56,3 +56,22 @@ If.prototype.getPosition = function() {
   ];
 };
 
+
+/**
+ * Calculate the outcome of passing through this component.
+ *
+ * @param {number} value The value to calculate.
+ * @return {number|boolean} The result depending on type.
+ */
+If.prototype.calculate = function(/* value */) {
+
+};
+
+/**
+ * Plug in a UI-Component to attach behaviors to this component.
+ *
+ * @param {app.level.Component} component The UI-components.
+ */
+If.prototype.plug = function(/* component */) {
+
+};

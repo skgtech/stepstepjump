@@ -4,8 +4,8 @@
 var cip = require('cip');
 
 var Line = require('./components/line.comp');
-var If = require('./components/if.comp');
-var IfLoop = require('./components/ifLoop.comp');
+var If = require('./components/placeholder-if.comp');
+var IfLoop = require('./components/placeholder-if-loop.comp');
 var Operation = require('./components/operation.comp');
 
 /**
