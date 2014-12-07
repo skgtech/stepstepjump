@@ -88,12 +88,15 @@ Component.prototype.getPosition = function() {
  * @return {number|boolean} The result depending on type.
  */
 Component.prototype.calculate = function(value) {
+  var res = 0;
   switch(this.operation) {
     case Component.Operation.ADD:
-      return value + this.num;
+      res = value + this.num;
       break;
- }
-}
+  }
+
+  return res;
+};
 
 
 /**
