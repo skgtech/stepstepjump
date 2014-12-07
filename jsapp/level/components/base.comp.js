@@ -31,6 +31,7 @@ Component.Type = {
   PLACEHOLDER_OPERATION: 'placeholderOperation',
   OPERATION: 'operation',
   IF_LOOP: 'ifLoop',
+  IF: 'if',
 };
 
 /**

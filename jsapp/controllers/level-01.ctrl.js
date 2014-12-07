@@ -29,7 +29,8 @@ Level01.prototype.init = function() {
 
   var level = new Level(this.vector);
 
-  level.makeLine(50,200, 500, 200);
+  level.makeLine(50,60, 100, 60);
+  level.makeIf(100, 60, 130, 80, 130, 40);
 
 //  level.makePlaceholderIfLoop({
 //    x1: 500,
