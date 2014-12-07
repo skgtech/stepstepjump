@@ -14,6 +14,15 @@ var Component = module.exports = cip.extend(function (vector) {
   /** @type {?app.level.component.Base.Type} the type */
   this.type = null;
 
+  /** @type {app.level.component.Base.Operation} the operation */
+  this.operation = null;
+
+  /** @type {?number} the num */
+  this.num = null;
+
+  /* @type {?number} the cpuCost of the operation */
+  this.cpuCost = null;
+
   /** @type {app.Vector} vector The vector instance */
   this.vector = vector;
 
@@ -32,6 +41,12 @@ Component.Type = {
   OPERATION: 'operation',
   IF_LOOP: 'ifLoop',
   IF: 'if',
+};
+
+/** @enum {string} The component operations */
+Component.Operation = {
+  ADD: 'add',
+  SUB: 'sub'
 };
 
 /**
@@ -83,4 +98,17 @@ Component.prototype.calculate = function(/* arg */) {
  */
 Component.prototype.getCpuCost = function() {
   throw new Error('Not Implemented');
+};
+
+/*
+ * Adds an operation to component
+ *
+ * @param {number} value The operation to perform when run calculate.
+ * @param {number} value The right number of the operation.
+ * @param {number} value The cpuCost value of the operation.
+ */
+Component.prototype.addOperation = function(op, num, cpuCost) {
+  this.operation = op;
+  this.num = num;
+  this.cpuCost = cpuCost;
 };
