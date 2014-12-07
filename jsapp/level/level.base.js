@@ -5,6 +5,7 @@ var cip = require('cip');
 
 var Line = require('./components/line.comp');
 var If = require('./components/if.comp');
+var IfLoop = require('./components/ifLoop.comp');
 
 /**
  * The base level designer.
@@ -21,7 +22,7 @@ var Level = module.exports = cip.extend(function (vector) {
 });
 
 /**
- * Draw the component on the underlying vector library.
+ * Draw the line on the underlying vector library.
  *
  * @param {number} x1 The x1 position.
  * @param {number} y1 The y1 position.
@@ -39,7 +40,7 @@ Level.prototype.makeLine = function(x1, x2, y1, y2) {
 };
 
 /**
- * Draw the component on the underlying vector library.
+ * Draw the if on the underlying vector library.
  *
  * @param {number} x1 The x1 position.
  * @param {number} y1 The y1 position.
@@ -54,6 +55,26 @@ Level.prototype.makeIf = function(x1, y1, x2, y2, x3, y3) {
   triangle.draw(x1, y1, x2, y2, x3, y3);
 
   this.struct.push(triangle);
+
+  return this;
+};
+
+/**
+ * Draw the if loop on the underlying vector library.
+ *
+ * @param {number} x1 The x1 position.
+ * @param {number} y1 The y1 position.
+ * @param {number} x2 The x2 position.
+ * @param {number} y2 The y2 position.
+ * @param {number} x3 The x3 position.
+ * @param {number} y3 The y3 position.
+ * @return {self} Chainable.
+ */
+Level.prototype.makeIfLoop = function(x1, y1, x2, y2, x3, y3) {
+  var ifLoop = new IfLoop(this.vector);
+  ifLoop.draw(x1, y1, x2, y2, x3, y3);
+
+  this.struct.push(ifLoop);
 
   return this;
 };
