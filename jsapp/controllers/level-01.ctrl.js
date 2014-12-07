@@ -4,6 +4,7 @@
 
 var Vector = require('../vector/main.vector');
 var Level = require('../level/level.base');
+var Ball = require('../ball/ball.base');
 
 /**
  * Level 01 controller.
@@ -20,6 +21,7 @@ var Level01 = module.exports = function () {
 Level01.prototype.init = function() {
 
   this.vector = new Vector();
+  this.ball = new Ball();
 
 //  var levelPart1 = new Level(this.vector);
 //  var levelPartLoop1 = new Level(this.vector);
@@ -44,4 +46,6 @@ Level01.prototype.init = function() {
 //  });
 
   this.vector.update();
+
+  this.ball.run(level);
 };

@@ -33,6 +33,10 @@ Ball.prototype.run = function(level) {
       this.run(level.struct[next][route]);
       break;
 
+    case Component.Type.OPERATION:
+      res = component.calculate(this.value);
+      console.log(res);
+      break;
     }
   }, this);
 };
