@@ -31,7 +31,8 @@
     "cip": "^0.2.5",
     "bluebird": "~2.3.0",
     "lodash": "~2.4.1",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "jquery-mousewheel": "~3.1.12"
   },
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
