@@ -2,7 +2,7 @@
  * @fileOverview The Placeholder If Loop component.
  */
 
-var Base = require('./base');
+var Base = require('./base.comp');
 
 /**
  * The Placeholder If Loop component.

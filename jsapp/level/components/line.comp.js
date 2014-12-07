@@ -2,7 +2,7 @@
  * @fileOverview The line component.
  */
 
-var Base = require('./base');
+var Base = require('./base.comp');
 
 /**
  * The line component.
