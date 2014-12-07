@@ -133,6 +133,28 @@ Level.prototype.makeOperation = function(x1, y1) {
 //   return this;
 // };
 
+/**
+ * Returns the component under a point.
+ *
+ * @param {number} x The x coordinate of the point.
+ * @param {number} y The y coordinate of the point.
+ * @return {?app.components.Base} The component under the given point.
+ */
+Level.prototype.getComponentAt = function (x, y) {
+  var result;
+  this.struct.some(function(e) {
+    var boundingRect = e.getShape().getBoundingClientRect();
+    var leftMostX = boundingRect.left,
+        rightMostX = boundingRect.left + boundingRect.width,
+        upperMostY = boundingRect.top,
+        lowerMostY = boundingRect.top + boundingRect.height;
+    var isPointInRect = x >= leftMostX && x <= rightMostX &&
+      y >= upperMostY &&   y <= lowerMostY;
+    return isPointInRect && (result = e);
+  });
+  return result;
+};
+
 // line(x1, y1, x2, y2)
 // placeholderIf({x, y, routeZero, routeOne})
 // placeholderIfLoop({x, y, routeZero, routeLoop})
