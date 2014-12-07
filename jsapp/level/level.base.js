@@ -29,7 +29,7 @@ var Level = module.exports = cip.extend(function (vector) {
  * @param {number} y1 The y1 position.
  * @param {number} x2 The x2 position.
  * @param {number} y2 The y2 position.
- * @return {self} Chainable.
+ * @return {app.level.component.Line} The Line Component
  */
 Level.prototype.makeLine = function(x1, x2, y1, y2) {
   var line = new Line(this.vector);
@@ -37,7 +37,7 @@ Level.prototype.makeLine = function(x1, x2, y1, y2) {
 
   this.struct.push(line);
 
-  return this;
+  return line;
 };
 
 /**
@@ -45,7 +45,7 @@ Level.prototype.makeLine = function(x1, x2, y1, y2) {
  *
  * @param {number} x1 The x1 position.
  * @param {number} y1 The y1 position.
- * @return {self} Chainable.
+ * @return {app.level.component.If} The If Component
  */
 Level.prototype.makeIf = function(x1, y1) {
   var triangle = new If(this.vector);
@@ -53,7 +53,7 @@ Level.prototype.makeIf = function(x1, y1) {
 
   this.struct.push(triangle);
 
-  return this;
+  return triangle;
 };
 
 /**
@@ -61,7 +61,7 @@ Level.prototype.makeIf = function(x1, y1) {
  *
  * @param {number} x1 The x1 position.
  * @param {number} y1 The y1 position.
- * @return {self} Chainable.
+ * @return {app.level.component.IfLoop} The IfLoop Component
  */
 Level.prototype.makeIfLoop = function(x1, y1) {
   var ifLoop = new IfLoop(this.vector);
@@ -69,7 +69,7 @@ Level.prototype.makeIfLoop = function(x1, y1) {
 
   this.struct.push(ifLoop);
 
-  return this;
+  return ifLoop;
 };
 
 /**
@@ -79,7 +79,7 @@ Level.prototype.makeIfLoop = function(x1, y1) {
  * @param {number} y1 The y1 position.
  * @param {number} w The width.
  * @param {number} h The height.
- * @return {self} Chainable.
+ * @return {app.level.component.Operation The Operation Component
  */
 Level.prototype.makeOperation = function(x1, y1) {
   var op = new Operation(this.vector);
@@ -87,7 +87,7 @@ Level.prototype.makeOperation = function(x1, y1) {
 
   this.struct.push(op);
 
-  return this;
+  return op;
 };
 
 /**
