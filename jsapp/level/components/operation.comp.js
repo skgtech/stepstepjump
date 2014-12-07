@@ -37,16 +37,6 @@ Operation.prototype.draw = function (x1, y1, w, h) {
 };
 
 /**
- * Calculate the outcome of passing through this component.
- *
- * @param {number} value The value to calculate.
- * @return {number|boolean} The result depending on type.
- */
-Operation.prototype.calculate = function (/* value */) {
-
-};
-
-/**
  * Plug in a UI-Component to attach behaviors to this component.
  *
  * @param {app.level.Component} component The UI-components.

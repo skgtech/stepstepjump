@@ -23,16 +23,25 @@ Ball.prototype.run = function(level) {
     var res, next, route;
 
     switch(component.getType()) {
-    case Component.Type.IF:
-    case Component.Type.IF_LOOP:
-    case Component.Type.PLACEHOLDER_IF:
-    case Component.Type.PLACEHOLDER_IF_LOOP:
-      res = component.calculate(this.value);
-      next = index + 1;
-      route = res ? 1 : 0;
-      this.run(level.struct[next][route]);
-      break;
+      case Component.Type.IF:
 
+      case Component.Type.IF_LOOP:
+
+      case Component.Type.PLACEHOLDER_IF:
+
+      case Component.Type.PLACEHOLDER_IF_LOOP:
+        res = component.calculate(this.value);
+        next = index + 1;
+        route = res ? 1 : 0;
+        this.run(level.struct[next][route]);
+        break;
+
+      case Component.Type.OPERATION:
+        res = component.calculate(this.value);
+        console.log(res);
+        break;
     }
+
   }, this);
+
 };

@@ -13,6 +13,9 @@ var cip = require('cip');
 var Component = module.exports = cip.extend(function (vector) {
   /** @type {?app.level.component.Base.Type} the type */
   this.type = null;
+  this.op = null;
+  this.num = null;
+  this.cpuCost = null;
 
   /** @type {app.Vector} vector The vector instance */
   this.vector = vector;
@@ -32,6 +35,12 @@ Component.Type = {
   OPERATION: 'operation',
   IF_LOOP: 'ifLoop',
   IF: 'if',
+};
+
+/** @enum {string} The component operations */
+Component.Operation = {
+  ADD: 'add',
+  SUB: 'sub'
 };
 
 /**
@@ -72,8 +81,12 @@ Component.prototype.getPosition = function() {
  * @param {number} value The value to calculate.
  * @return {number|boolean} The result depending on type.
  */
-Component.prototype.calculate = function(/* arg */) {
-  throw new Error('Not Implemented');
+Component.prototype.calculate = function(value) {
+  switch(this.op) {
+    case Component.Operation.ADD:
+      return value + this.num;
+      break;
+  }
 };
 
 /**
@@ -83,4 +96,17 @@ Component.prototype.calculate = function(/* arg */) {
  */
 Component.prototype.getCpuCost = function() {
   throw new Error('Not Implemented');
+};
+
+/**
+ * Define the component's operation
+ *
+ * @param op {string} The operation type
+ * @param num {number} The operation's number
+ * @param cpuCost {number} The cpu Cost of the operation
+ */
+Component.prototype.addComponentOperation = function(op, num, cpuCost) {
+  this.op = op;
+  this.num = num;
+  this.cpuCost = cpuCost;
 };

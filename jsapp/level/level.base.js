@@ -69,7 +69,6 @@ Level.prototype.makeIf = function(x1, y1, x2, y2, x3, y3) {
  * @param {number} y2 The y2 position.
  * @param {number} x3 The x3 position.
  * @param {number} y3 The y3 position.
- * @return {self} Chainable.
  */
 Level.prototype.makeIfLoop = function(x1, y1, x2, y2, x3, y3) {
   var ifLoop = new IfLoop(this.vector);
@@ -87,7 +86,6 @@ Level.prototype.makeIfLoop = function(x1, y1, x2, y2, x3, y3) {
  * @param {number} y1 The y1 position.
  * @param {number} w The width.
  * @param {number} h The height.
- * @return {self} Chainable.
  */
 Level.prototype.makeOperation = function(x1, y1, w, h) {
   var op = new Operation(this.vector);
@@ -95,7 +93,7 @@ Level.prototype.makeOperation = function(x1, y1, w, h) {
 
   this.struct.push(op);
 
-  return this;
+  return op;
 };
 
 /**
