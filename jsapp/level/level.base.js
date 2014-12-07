@@ -11,7 +11,7 @@ var Line = require('./components/line.comp');
  * @param {app.Vector} vector The vector instance.
  * @constructor
  */
-var Level = cip.extend(function (vector) {
+var Level = module.exports = cip.extend(function (vector) {
   /** @type {app.Vector} vector The vector instance */
   this.vector = vector;
 
