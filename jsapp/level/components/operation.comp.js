@@ -13,10 +13,10 @@ var Base = require('./base.comp');
 var Operation = module.exports = Base.extend(function () {
   this.type = Base.Type.OPERATION;
 
-  /** @type {?number} Width */
-  this.w = null;
-  /** @type {?number} Height */
-  this.h = null;
+  /** @type {number} Width */
+  this.w = 30;
+  /** @type {number} Height */
+  this.h = 30;
 });
 
 /**
@@ -27,13 +27,11 @@ var Operation = module.exports = Base.extend(function () {
  * @param {number} w  The width.
  * @param {number} h The height.
  */
-Operation.prototype.draw = function (x1, y1, w, h) {
+Operation.prototype.draw = function (x1, y1) {
   this.x1 = x1;
   this.y1 = y1;
-  this.w = w;
-  this.h = h;
 
-  this.vector.makeRectangle(x1, y1, w, h);
+  this.vector.makeRectangle(this.x1, this.y1, this.w, this.h);
 };
 
 /**
