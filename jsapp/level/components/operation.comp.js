@@ -27,13 +27,13 @@ var Operation = module.exports = Base.extend(function () {
  * @param {number} w  The width.
  * @param {number} h The height.
  */
-Operation.prototype.draw = function (x1, y1, w, h) {
+Operation.prototype.draw = function (x1, y1) {
   this.x1 = x1;
   this.y1 = y1;
-  this.w = w;
-  this.h = h;
+  this.w = 30;
+  this.h = 30;
 
-  this.vector.makeRectangle(x1, y1, w, h);
+  this.vector.makeRectangle(this.x1, this.y1, this.w, this.h);
 };
 
 /**
