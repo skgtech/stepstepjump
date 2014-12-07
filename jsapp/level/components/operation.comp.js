@@ -31,7 +31,7 @@ Operation.prototype.draw = function (x1, y1) {
   this.x1 = x1;
   this.y1 = y1;
 
-  this.vector.makeRectangle(this.x1, this.y1, this.w, this.h);
+  this.shape = this.vector.makeRectangle(this.x1, this.y1, this.w, this.h);
 };
 
 /**

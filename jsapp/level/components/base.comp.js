@@ -21,6 +21,8 @@ var Component = module.exports = cip.extend(function (vector) {
   this.x1 = null;
   /** @type {?number} Pos y */
   this.y1 = null;
+  /** @type {?Two.Polygon} shape The shape */
+  this.shape = null;
 });
 
 /** @enum {string} The component types */
@@ -52,6 +54,15 @@ Component.prototype.draw = function(/* x1, y1 */) {
  */
 Component.prototype.getType = function() {
   return this.type;
+};
+
+/**
+ * Get the shape of the component.
+ *
+ * @return {Two.Polygon} The shape.
+ */
+Component.prototype.getShape = function() {
+  return this.shape;
 };
 
 /**

@@ -41,8 +41,10 @@ IfLoop.prototype.draw = function(x1, y1) {
   this.x3 = x1 + 30;
   this.y3 = y1 + 30;
 
-  this.vector.makePolygon(this.x1,  this.y1, this.x2, this.y2, this.x3, this.y3);
-  this.vector.two.makeCircle(this.x1 + (this.x2 - this.x1) / 2, this.y2 + (this.y3 - this.y2), (this.x2 - this.x1) / 2);
+  var triangle = this.vector.makePolygon(this.x1,  this.y1, this.x2, this.y2, this.x3, this.y3);
+  var circle = this.vector.two.makeCircle(this.x1 + (this.x2 - this.x1) / 2, this.y2 + (this.y3 - this.y2), (this.x2 - this.x1) / 2);
+  this.shape = this.vector.two.makeGroup();
+  this.shape.add(triangle, circle);
 };
 
 /**

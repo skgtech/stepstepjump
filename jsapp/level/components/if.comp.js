@@ -41,7 +41,7 @@ If.prototype.draw = function(x1, y1) {
   this.x3 = x1 + 30;
   this.y3 = y1 + 30;
 
-  this.vector.makePolygon(this.x1,  this.y1, this.x2, this.y2, this.x3, this.y3);
+  this.shape = this.vector.makePolygon(this.x1,  this.y1, this.x2, this.y2, this.x3, this.y3);
 };
 
 /**
