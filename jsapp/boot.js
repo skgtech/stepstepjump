@@ -9,3 +9,6 @@ var Level01 = require('./controllers/level-01.ctrl');
 
 var level01 = new Level01();
 level01.init();
+
+var $ = require('../bower_components/jquery/dist/jquery.js');
+$('#modalSaveToParse').modal('show');
