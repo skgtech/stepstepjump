@@ -5,6 +5,8 @@ var cip = require('cip');
 
 var Line = require('./components/line.comp');
 var If = require('./components/if.comp');
+var IfLoop = require('./components/ifLoop.comp');
+var Operation = require('./components/operation.comp');
 
 /**
  * The base level designer.
@@ -21,13 +23,13 @@ var Level = module.exports = cip.extend(function (vector) {
 });
 
 /**
- * Draw the component on the underlying vector library.
+ * Draw the line on the underlying vector library.
  *
  * @param {number} x1 The x1 position.
  * @param {number} y1 The y1 position.
  * @param {number} x2 The x2 position.
  * @param {number} y2 The y2 position.
- * @return {self} Chainable.
+ * @return {app.level.component.Line} The Line Component
  */
 Level.prototype.makeLine = function(x1, x2, y1, y2) {
   var line = new Line(this.vector);
@@ -35,27 +37,57 @@ Level.prototype.makeLine = function(x1, x2, y1, y2) {
 
   this.struct.push(line);
 
-  return this;
+  return line;
 };
 
 /**
- * Draw the component on the underlying vector library.
+ * Draw the if on the underlying vector library.
  *
  * @param {number} x1 The x1 position.
  * @param {number} y1 The y1 position.
- * @param {number} x2 The x2 position.
- * @param {number} y2 The y2 position.
- * @param {number} x3 The x3 position.
- * @param {number} y3 The y3 position.
- * @return {self} Chainable.
+ * @return {app.level.component.If} The If Component
  */
-Level.prototype.makeIf = function(x1, y1, x2, y2, x3, y3) {
+Level.prototype.makeIf = function(x1, y1) {
   var triangle = new If(this.vector);
-  triangle.draw(x1, y1, x2, y2, x3, y3);
+  triangle.draw(x1, y1);
 
   this.struct.push(triangle);
 
-  return this;
+  return triangle;
+};
+
+/**
+ * Draw the if loop on the underlying vector library.
+ *
+ * @param {number} x1 The x1 position.
+ * @param {number} y1 The y1 position.
+ * @return {app.level.component.IfLoop} The IfLoop Component
+ */
+Level.prototype.makeIfLoop = function(x1, y1) {
+  var ifLoop = new IfLoop(this.vector);
+  ifLoop.draw(x1, y1);
+
+  this.struct.push(ifLoop);
+
+  return ifLoop;
+};
+
+/**
+ * Draw an Operation on the underlying vector library.
+ *
+ * @param {number} x1 The x1 position.
+ * @param {number} y1 The y1 position.
+ * @param {number} w The width.
+ * @param {number} h The height.
+ * @return {app.level.component.Operation The Operation Component
+ */
+Level.prototype.makeOperation = function(x1, y1) {
+  var op = new Operation(this.vector);
+  op.draw(x1, y1);
+
+  this.struct.push(op);
+
+  return op;
 };
 
 /**
@@ -100,6 +132,28 @@ Level.prototype.makeIf = function(x1, y1, x2, y2, x3, y3) {
 
 //   return this;
 // };
+
+/**
+ * Returns the component under a point.
+ *
+ * @param {number} x The x coordinate of the point.
+ * @param {number} y The y coordinate of the point.
+ * @return {?app.components.Base} The component under the given point.
+ */
+Level.prototype.getComponentAt = function (x, y) {
+  var result;
+  this.struct.some(function(e) {
+    var boundingRect = e.getShape().getBoundingClientRect();
+    var leftMostX = boundingRect.left,
+        rightMostX = boundingRect.left + boundingRect.width,
+        upperMostY = boundingRect.top,
+        lowerMostY = boundingRect.top + boundingRect.height;
+    var isPointInRect = x >= leftMostX && x <= rightMostX &&
+      y >= upperMostY &&   y <= lowerMostY;
+    return isPointInRect && (result = e);
+  });
+  return result;
+};
 
 // line(x1, y1, x2, y2)
 // placeholderIf({x, y, routeZero, routeOne})
