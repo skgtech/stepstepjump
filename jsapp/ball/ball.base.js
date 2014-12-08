@@ -3,7 +3,7 @@
  */
 var cip = require('cip');
 
-var Component = require('../Level/components/base.comp');
+var Component = require('../level/components/base.comp');
 
 var Ball = module.exports = cip.extend(function () {
   this.value = 0;

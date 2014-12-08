@@ -9,8 +9,10 @@ require('jquery-mousewheel')($);
  * The base abstraction for vector graphics.
  *
  * @constructor
+ *
+ * @param {boolean} zoomable True if the zoom ui must be enabled.
  */
-var Vector = module.exports = function() {
+var Vector = module.exports = function(zoomable) {
   // Make an instance of two and place it on the page.
   var elem = document.getElementById('draw-shapes');
   var params = {
@@ -20,19 +22,20 @@ var Vector = module.exports = function() {
   /** @type {Two} Local instance of Two. */
   this.two = new Two(params).appendTo(elem);
 
+  if (zoomable) {
+    this.zui = new ZUI(this.two);
+    this.zui.addLimits(0.06, 8);
+    var $stage = $('body');
+    $stage.bind('mousewheel', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
 
-  this.zui = new ZUI(this.two);
-  this.zui.addLimits(0.06, 8);
-  var $stage = $('body');
-  $stage.bind('mousewheel', function(e) {
-    e.stopPropagation();
-    e.preventDefault();
+      var dy = e.deltaY / 10;
 
-    var dy = e.deltaY / 10;
+      this.zui.zoomBy(dy, e.clientX, e.clientY);
 
-    this.zui.zoomBy(dy, e.clientX, e.clientY);
-
-  }.bind(this));
+    }.bind(this));
+  }
 
   console.log('width:', this.two.width);
   console.log('height:', this.two.height);
@@ -89,4 +92,47 @@ Vector.prototype.makeRectangle = function(x1, y1, w, h) {
  */
 Vector.prototype.update = function () {
   this.two.update();
+};
+
+/**
+ * Returns the height of the canvas.
+ * @return {number} The height of the canvas.
+ */
+Vector.prototype.getCanvasHeight = function () {
+  return this.two.height;
+};
+
+/**
+ * Returns the width of the canvas.
+ *
+ * @return {number} The width of the canvas.
+ */
+Vector.prototype.getCanvasWidth = function () {
+  return this.two.width;
+};
+
+/**
+ * Draws a rectangle
+ *
+ *@param {number} x The left-most x coordinate of the rectangle.
+ *@param {number} y The center y coordinate of the rectangle.
+ *@param {number} width The width of the rectangle.
+ *@param {number} height The height of the rectangle.
+ *@return {Two.Polygon} The rectangle.
+ */
+Vector.prototype.makeRectangle = function (x, y, width, height) {
+  var centerX = x + width / 2,
+      centerY = y;
+  return this.two.makeRectangle(centerX, centerY, width, height);
+};
+
+/**
+ * Binds and event.
+ *
+ * @param {string} eventName The name of the event.
+ * @param {function} callback The callback to call when the appropriate events are fired.
+ * @param {context} the context in which to execute the callback.
+ */
+Vector.prototype.bind = function (eventName, callback, context) {
+  this.two.bind(eventName, callback, context);
 };
